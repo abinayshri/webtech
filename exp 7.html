@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experiment 7</title>
+ 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384- gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384- A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="Exp7.css">
+<style>
+body {
+background-image: url(‘black\ 2.jpg’);
+background-repeat: no-repeat; background-attachment: fixed; background-size: cover;
+}
+</style>
+</head>
+<body>
+<div class="lane1" style="border: solid 2px yellow;">
+<div id="lane1">
+<img src="car 1.png" alt="car1" id="car1">
+</div>
+</div>
+<div class="lane1" style="border: solid 2px skyblue;">
+<div id="lane2">
+<img src="car 1.png" alt="car2" style="filter:hue-rotate(160deg);" id="car2">
+</div>
+</div>
+ 
+</div>
+<div class="lane1" style="border: solid 2px green;">
+<div id="lane3">
+<img src="car 1.png" alt="car3" style="filter:hue-rotate(55deg)" id="car3">
+</div>
+</div>
+<div class="lane1" style="border: solid 2px palevioletred;">
+<div id="lane4">
+<img src="car 1.png" alt="car4" style="filter:hue-rotate(295deg)" id="car4">
+</div>
+</div><br><br><br><br>
+<button id="start">start</button><br><br>
+<hr class="border border-warning border-2 opacity-50 mt-5">
+<section id="Q2">
+<h3 class="text-center text-white bg p-5">2. Append and Prepend</h3>
+<div class="text-center ">
+<button class="btn btn-outline-warning m-5" id="at">Append Text</button>
+<button class="btn btn-outline-warning m-5" id="al">Append to List</button>
+<button class="btn btn-outline-warning m-5" id="pt">Prepend Text</button>
+<button class="btn btn-outline-warning m-5" id="pl">Prepend to List</button>
+<button class="btn btn-outline-warning m-5" id="f">Add Form</button>
+<button class="btn btn-outline-warning m-5" id="input">Add Data to input</button>
+<button class="btn btn-outline-warning m-5" id="rl">Reset</button>
+</div>
+<p class="text-primary text-center" id="txt">Hello Dynamic!</p>
+<ul class="text-primary list-group-numbered text-center" id="lst">
+<li class="list-group-item">Abinayshree</li>
+<li class="list-group-item">RetroGrade</li>
+<li class="list-group-item">Dulcinea</li>
+</ul>
+<br><br>
+<div id="inp" class="text-center"></div>
+ 
+<hr class="border border-warning border-2 opacity-50">
+</section>
+<section id="Q3" class="bg-white">
+<h3 class="text-center text-white bg mt-5">3. Car Workshop</h3>
+<div class="container text-center">
+<div class="trapezoid"></div>
+<div class="rectangle "></div>
+<div class="tyre">
+<div class="circle me-5">
+</div>
+<div class="circle ">
+</div>
+</div>
+<div>
+<button class="btn btn-warning m-5" id="gc">Change Glass Color</button>
+<button class="btn btn-warning m-5" id="bc">Change Body Color</button>
+<button class="btn btn-warning m-5" id="ti">Tyre Size Increase</button>
+<button class="btn btn-warning m-5" id="td">Tyre Size Decrease</button>
+<button class="btn btn-warning m-5" id="rl1">Reset</button>
+</div>
+</div>
+<hr class="border border-primary border-2 opacity-50">
+</section>
+<script src="Exp7.js"></script>
+</body>
+
+
+</html>
+CSS Code :
+* {
+margin: 0px;
+}
+ 
+#lane1, #lane2, #lane3, #lane4 {
+padding: 30px 0 30px; position: relative; height: 80px;
+}
+
+
+img {
+/* transform: rotateX(0deg); */ width: 150px;
+height: auto;
+}
+
+
+.trapezoid {
+border-bottom: 50px solid #555; border-left: 25px solid transparent; border-right: 25px solid transparent; height: 0;
+width: 125px; margin-left: 30px;
+}
+
+
+.circle {
+height: 50px; width: 50px;
+background-color: #555;
+border-radius: 50%; display: inline-block;
+}
+
+
+.tyre {
+margin-right: 950px;
+
+}
+
+
+.rectangle { height: 60px; width: 277px;
+background-color: #555;
+}
+
+
+.lane1 {
+position: relative;
+}
+
+
+JavaScript Code:
+$(document).ready(function() {
+
+
+$('#start').click(function() { let i = 0;
+while (i < 10) {
+if ((parseInt($('#lane1').css('top')) < -10) || (parseInt($('#lane1').css('top')) > 470)) {
+$('#car1').fadeOut();
+// $('#lane1').fadeOut();
+// $('#lane1').animate({
+//	left: '0px',
+//	top: '0px'
+// }, 1000);
+// $('#car1').fadeIn(1); i = 11;
+
+} else {
+if ((Math.floor(Math.random() * (2 - 1) + 1)) == 1) {
+$('#lane1').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '+=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px',
+ 
+}, 500);
+} else {
+$('#lane1').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '-=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px'
+
+}, 500);
+}
+// alert($('#lane1').css('top'))
+}
+
+
+if ((parseInt($('#lane2').css('top')) < -10) || (parseInt($('#lane2').css('top')) > 470)) {
+$('#car2').fadeOut();
+// $('#lane1').fadeOut();
+// $('#lane1').animate({
+//	left: '0px',
+//	top: '0px'
+// }, 1000);
+// $('#car1').fadeIn(1); i = 11;
+
+} else {
+if ((Math.floor(Math.random() * (2 - 1) + 1)) == 1) {
+$('#lane2').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '+=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px',
+
+}, 500);
+} else {
+$('#lane2').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '-=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px'
+
+}, 500);
+ 
+}
+// alert($('#lane1').css('top'))
+}
+
+
+if ((parseInt($('#lane3').css('top')) < -10) || (parseInt($('#lane3').css('top')) > 470)) {
+$('#car3').fadeOut();
+// $('#lane1').fadeOut();
+// $('#lane1').animate({
+//	left: '0px',
+//	top: '0px'
+// }, 1000);
+// $('#car1').fadeIn(1); i = 11;
+
+} else {
+if ((Math.floor(Math.random() * (2 - 1) + 1)) == 1) {
+$('#lane3').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '+=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px',
+
+}, 500);
+} else {
+$('#lane3').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '-=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px'
+
+}, 500);
+}
+// alert($('#lane1').css('top'))
+}
+
+
+if ((parseInt($('#lane4').css('top')) < -10) || (parseInt($('#lane4').css('top')) > 470)) {
+$('#car4').fadeOut();
+// $('#lane1').fadeOut();
+ 
+// $('#lane1').animate({
+//	left: '0px',
+//	top: '0px'
+// }, 1000);
+// $('#car1').fadeIn(1); i = 11;
+
+} else {
+if ((Math.floor(Math.random() * (2 - 1) + 1)) == 1) {
+$('#lane4').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '+=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px',
+
+}, 500);
+} else {
+$('#lane4').animate({
+left: '+=' + Math.floor(Math.random() * (250 - 1) + 1) + 'px', top: '-=' + Math.floor(Math.random() * (100 - 1) + 1) + 'px'
+
+}, 500);
+}
+// alert($('#lane1').css('top'))
+}
+
+
+i += 1;
+}
+// $('#car1').animate({
+//	top: '+=5' + 'px'
+// }, 200)
+})
+
+
+
+
+$("#f").click(function() {
+$("#inp").append("<input type='text' id='i1' value='Hello'> <br><br>");
+ 
+})
+
+
+$("#input").click(function() {
+// let data = prompt("Enter Content: "); data = 'dynamic';
+$("#i1").val(data);
+})
+
+
+$("#at").click(function() {
+$("#txt").append(" <b>Appended text</b>.");
+});
+
+
+$("#al").click(function() {
+$("#lst").append("<li class='list-group-item'>Appended Item</li>");
+});
+
+
+$("#pt").click(function() {
+$("#txt").prepend(" <b>Prepended text</b>.");
+});
+
+
+$("#pl").click(function() {
+$("#lst").prepend("<li class='list-group-item'>Prepended Item</li>");
+});
+$("#rl").click(function() { location.reload(true);
+});
+
+
+$("#gc").click(function() {
+const randomColor = Math.floor(Math.random() * 16777215).toString(16); var color = "#" + randomColor;
+$(".trapezoid").css("border-bottom-color", color);
+});
+
+
+$("#bc").click(function() {
+ 
+const randomColor = Math.floor(Math.random() * 16777215).toString(16); var color = "#" + randomColor;
+$(".rectangle").css("background-color", color);
+});
+
+
+$("#ti").click(function() {
+$(".circle").css("width", "+=10");
+$(".circle").css("height", "+=10");
+});
+
+
+$("#td").click(function() {
+$(".circle").css("width", "-=10");
+$(".circle").css("height", "-=10");
+});
+$("#rl1").click(function() { location.reload(true);
+});
+})
